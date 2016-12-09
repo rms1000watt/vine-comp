@@ -165,8 +165,11 @@ def concat_vines(data, name):
             path = ap('render/' + vineid + '.mp4')
             l.write('file \'' + path + '\'\n')
 
-    args = (['ffmpeg', '-f', 'concat', '-i', vine_list_path,
+    args = (['ffmpeg', '-f', 'concat', '-safe', '0', '-i', vine_list_path,
              '-c', 'copy', final_path])
+
+    print "CALLING", args
+    print "CALLING", " ".join(args)
     subprocess.call(args)
 
     return final_path
@@ -223,7 +226,8 @@ if __name__ == '__main__':
 
     try:
         if osp.isfile(path):
-            upload_video(path, desc, name)
+            print "UPLOAD FILE TO YOUTUBE HERE..."
+            # upload_video(path, desc, name)
         else:
             print('Final ' + name + ' render file not found')
     except Exception as e:

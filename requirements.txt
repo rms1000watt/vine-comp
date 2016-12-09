@@ -1,0 +1,8 @@
+pandas
+requests
+moviepy
+numpy
+lxml
+gdata
+pycurl
+progressbar
